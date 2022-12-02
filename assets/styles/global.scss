@@ -1,0 +1,80 @@
+@import "mixins";
+@import "typography";
+@import "fonts";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all .25s;
+}
+
+*:focus {
+  outline: none;
+}
+
+body {
+  @include typography-base;
+  overflow: hidden;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, .95);
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+button {
+  @include button-reset;
+}
+
+ul {
+  @include ul-reset;
+}
+
+a {
+  @include a-reset;
+}
+
+input {
+  @include input-reset;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.page-enter-active,
+.page-leave-active {
+  opacity: 0;
+  transition: all .40s ease-in-out;
+}
+
+.page-enter {
+  transform: translateX(0);
+}
+
+.page-enter-to {
+  transform: translateX(100%);
+}
+
+.page-leave {
+  opacity: 1;
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(100%);
+  //box-shadow: 0 -1000px 1000px 400px #8C08F4;
+}
