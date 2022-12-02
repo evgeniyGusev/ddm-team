@@ -1,0 +1,28 @@
+@import "mixins";
+@import "fonts";
+
+@mixin typography-base {
+  font-style: normal;
+  font-family: Rubik, sans-serif;
+  color: #fff;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin glitch-text($size: 16px, $weight: 400) {
+  font-size: $size;
+  line-height: 1.2;
+  font-weight: $weight;
+  color: #FFFFFF;
+  text-shadow: 0px 2.34049px 4.68097px #FFA800, 1.40429px 4.21288px 7.02146px #B708F4;
+
+}
+
+@mixin grey-text($size: 16px, $weight: 400) {
+  font-size: $size;
+  line-height: 1.2;
+  font-weight: $weight;
+  color: #FFFFFF;
+  text-shadow: 0 2.34049px 4.68097px #FFA800, 1.40429px 4.21288px 7.02146px #B708F4;
+
+}
