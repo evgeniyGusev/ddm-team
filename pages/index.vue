@@ -17,7 +17,7 @@ import { ref } from 'vue';
 
 // swiper
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { EffectCube, Mousewheel } from 'swiper';
+import { EffectCube, Mousewheel, Parallax } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/mousewheel';
 import 'swiper/css/effect-cube';
@@ -39,6 +39,7 @@ const swiperOptions = ref({
   direction: 'vertical',
   mousewheel: true,
   allowTouchMove: false,
+  speed: 700,
 })
 </script>
 
