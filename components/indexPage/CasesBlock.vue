@@ -16,7 +16,7 @@
   height: 100%;
 
   .title {
-    @include glitch-text(80px, 600);
+    @include glitch-text(5em, 600);
     margin-bottom: 20px;
     text-align: center;
     text-transform: uppercase;
@@ -24,7 +24,7 @@
   }
 
   .description {
-    @include glitch-text(25px, 300);
+    @include glitch-text(2em, 300);
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1.46em;

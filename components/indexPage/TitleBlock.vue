@@ -12,11 +12,11 @@
 <style scoped lang="scss">
 .title-block {
   @include flex-centered(column);
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 
   .title {
-    @include glitch-text(80px, 600);
+    @include glitch-text(5em, 600);
     margin-bottom: 20px;
     text-align: center;
     text-transform: uppercase;
@@ -24,7 +24,7 @@
   }
 
   .description {
-    @include glitch-text(25px, 400);
+    @include glitch-text(2em, 400);
     padding: 5px 5px 5px 35px;
     text-align: center;
     text-transform: uppercase;

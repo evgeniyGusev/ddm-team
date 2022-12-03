@@ -1,56 +1,44 @@
 <template>
   <main class="main">
-    <transition name="page">
-      <component :is="views[currentStep]" class="main-content" />
-    </transition>
+    <Swiper v-bind="swiperOptions">
+      <SwiperSlide v-for="(view,, i) in views" :key="i">
+        <component :is="view" />
+      </SwiperSlide>
+    </Swiper>
 
-    <transition name="fade">
-      <ScrollArrows v-show="isFirstBlock" class="scroll-arrows" />
-    </transition>
+<!--    <transition name="fade">-->
+<!--      <ScrollArrows class="scroll-arrows" />-->
+<!--    </transition>-->
   </main>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref } from 'vue';
+
+// swiper
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { EffectCube, Mousewheel } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/mousewheel';
+import 'swiper/css/effect-cube';
+//END
+
+//pages
 import TitleBlock from "~/components/indexPage/TitleBlock.vue";
 import CasesBlock from "~/components/indexPage/CasesBlock.vue";
 import MembersBlock from "~/components/indexPage/MembersBlock.vue";
+//END
 import ScrollArrows from "~/components/general/ScrollArrows.vue";
 
 const views = { TitleBlock, CasesBlock, MembersBlock };
 
-const currentStep = ref('TitleBlock');
-const isCanBeScrolled = ref(true);
-
-const arrayOfBlocks = computed(() => Object.keys(views))
-const isFirstBlock = computed(() => currentStep.value === 'TitleBlock')
-const isLastBlock = computed(() => currentStep.value === arrayOfBlocks.value[arrayOfBlocks.value.length - 1])
-
-const setScrollStatus = () => {
-  isCanBeScrolled.value = false;
-
-  setTimeout(() => { isCanBeScrolled.value = true }, 500);
-}
-
-onMounted(() => {
-  const blocksArray = Object.keys(views);
-
-  document.addEventListener('wheel', e => {
-    if(isCanBeScrolled.value) {
-      const delta = Math.sign(e.deltaY);
-
-      if (delta === 1 && !isLastBlock.value) {
-        currentStep.value = arrayOfBlocks.value[arrayOfBlocks.value.indexOf(currentStep.value) + 1];
-      }
-
-      if (delta === -1 && !isFirstBlock.value) {
-
-        currentStep.value = arrayOfBlocks.value[arrayOfBlocks.value.indexOf(currentStep.value) - 1];
-      }
-
-      setScrollStatus()
-    }
-  })
+const swiperOptions = ref({
+  slidesPerView: 1,
+  modules: [EffectCube, Mousewheel],
+  effect: 'cube',
+  direction: 'vertical',
+  mousewheel: true,
+  allowTouchMove: false,
 })
 </script>
 
@@ -64,8 +52,8 @@ onMounted(() => {
   .scroll-arrows {
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate3d(-50%, -50%, 0);
+    bottom: -5vh;
+    transform: translate3d(-50%, 0, 0);
   }
 }
 </style>
